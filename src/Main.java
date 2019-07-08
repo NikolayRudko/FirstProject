@@ -47,5 +47,6 @@ public class Main {
                 task10.encryption();
             default:
         }
+        System.out.println("First commit Git");
     }
 }
