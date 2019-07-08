@@ -3,8 +3,26 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+
+        String[] MenuItem = new String[]
+                {
+                        "1 - Search max numbers",
+                        "2 - Triangle type definition",
+                        "3 - Discounted pricing",
+                        "4 - Calculation of factorial",
+                        "5 - The remainder of the division",
+                        "6 - Replacing the negative elements of the array",
+                        "7 - Matrix rotation",
+                        "8 - Determining the number of special elements of the array",
+                        "9 - String calculation",
+                        "10- Encryption text"
+                };
+        for (String item : MenuItem)
+            System.out.println(item);
+
         System.out.println("Enter menu item 1-10:");
         int numItem = in.nextInt();
+
 
         switch (numItem) {
             case 1:
@@ -47,6 +65,6 @@ public class Main {
                 task10.encryption();
             default:
         }
-        System.out.println("First commit Git");
+
     }
 }
