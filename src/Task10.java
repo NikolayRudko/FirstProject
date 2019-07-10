@@ -93,5 +93,4 @@ public class Task10 {
         }
         System.out.printf("Зашифрованый текст: %s%n", encryptionText);
     }
-
 }
