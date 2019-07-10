@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-
         String[] MenuItem = new String[]
                 {
                         "1 - Search max numbers",
@@ -22,9 +21,9 @@ public class Main {
         char choiceMenu;
         do {
             System.out.println("Enter menu item 1-10:");
-
             for (String item : MenuItem)
                 System.out.println(item);
+            System.out.println();
 
             int numItem = in.nextInt();
 
@@ -64,16 +63,17 @@ public class Main {
                 case 9:
                     Task09 task09 = new Task09();
                     task09.workWithWords();
+                    break;
                 case 10:
                     Task10 task10 = new Task10();
-                    task10.encryption();
+                    task10.menuEncryption();
+                    break;
                 default:
                     System.out.println("This menu item is not found.");
             }
-            System.out.println("If you want to continue with the menu enter \"Y\" or \"y\"");
+            System.out.println("\nIf you want to continue with the menu enter \"Y\" or \"y\"");
             choiceMenu = in.next(".").charAt(0);
         }
         while (choiceMenu == 'Y' || choiceMenu == 'y');
-
     }
 }

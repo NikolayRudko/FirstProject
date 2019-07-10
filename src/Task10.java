@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Task10 {
     Scanner in = new Scanner(System.in);
 
-   // private int selectEncryption;       //Choice of encryption or decryption
+    private int selectEncryption;       //Choice of encryption or decryption
     private String text;                //Origin text
     private String encryptionText = "";      //Encryption text
     private int shift = 3;              //Encryption Shift
@@ -68,9 +68,7 @@ public class Task10 {
         } while (!triger);
     }
 
-    public void encryption() {
-        //ввод текста
-        inputText();
+    private void encryption() {
         //проход по каждому символу исходной строки
         for (int i = 0; i < text.length(); i++) {
             //сравниваем с кажым символом из массива разрешенных символов
@@ -80,18 +78,41 @@ public class Task10 {
                     encryptionText = encryptionText + spaсe;
                     break;
                 }
-                //работа с маленькими буквами
-                if (text.charAt(i) == books[j] && i > (books.length - 1 - shift)) {
-                    encryptionText = encryptionText + books[(j % (books.length - 1 - shift)) + books.length / 2];
+                //работа с большими буквами
+                if (text.charAt(i) == books[j] && j < books.length / 2) {
+                    if (j + shift < books.length / 2)
+                        encryptionText = encryptionText + books[j + shift];
+                    else
+                        encryptionText = encryptionText + books[j - books.length / 2 + shift];
                     break;
                 }
-                //работа с большими буквами
-                if (text.charAt(i) == books[j] && i < (books.length - 1 - shift)) {
-                    encryptionText = encryptionText + books[j + shift];
+                //работа с  маленькимибуквами
+                if (text.charAt(i) == books[j]) {
+                    if (j + shift < books.length)
+                        encryptionText = encryptionText + books[j + shift];
+                    else
+                        encryptionText = encryptionText + books[j - books.length / 2 + shift];
                     break;
                 }
             }
         }
-        System.out.printf("Зашифрованый текст: %s%n", encryptionText);
+    }
+
+    public void menuEncryption() {
+        //ввод текста
+        inputText();
+        encryption();
+        System.out.println("Вывести:\n1. Исходный текст\n2. Шифрованный текст.");
+        selectEncryption = in.nextInt();
+        switch (selectEncryption) {
+            case 1:
+                System.out.println(text);
+                break;
+            case 2:
+                System.out.println(encryptionText);
+                break;
+            default:
+                System.out.println("Таккой пункт не найден");
+        }
     }
 }
