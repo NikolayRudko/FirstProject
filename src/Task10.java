@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Task10 {
     Scanner in = new Scanner(System.in);
 
-    private int selectEncryption;       //Choice of encryption or decryption
+   // private int selectEncryption;       //Choice of encryption or decryption
     private String text;                //Origin text
     private String encryptionText = "";      //Encryption text
     private int shift = 3;              //Encryption Shift
@@ -28,14 +28,13 @@ public class Task10 {
     //enter text
     private void inputText() {
         //индикатор наличия неправильного символа
-        boolean triger = true;
+        boolean triger;
         //зацикленный ввод строки пока не булет введена правильная строка
         //содержащая только русские буквы или пробел
         do {
             //индикатор наличия неправильного символа имеет начальное значение положительное
             triger = true;
-            System.out.println("Ввелите текст, используйте только символы:\n" +
-                    "А-Я, а-я или \"пробел\"\n");
+            System.out.println("Ввелите текст, используйте только символы:\nА-Я, а-я или \"пробел\"\n");
             //считывание строки из консоли
             text = in.nextLine();
             System.out.printf("Введеный текст: %s%n", text);
@@ -81,10 +80,12 @@ public class Task10 {
                     encryptionText = encryptionText + spaсe;
                     break;
                 }
+                //работа с маленькими буквами
                 if (text.charAt(i) == books[j] && i > (books.length - 1 - shift)) {
                     encryptionText = encryptionText + books[(j % (books.length - 1 - shift)) + books.length / 2];
                     break;
                 }
+                //работа с большими буквами
                 if (text.charAt(i) == books[j] && i < (books.length - 1 - shift)) {
                     encryptionText = encryptionText + books[j + shift];
                     break;
