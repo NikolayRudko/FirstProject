@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-
+        //for the future
         String[] MenuItem = new String[]
                 {
                         "1 - Search max numbers",
@@ -17,7 +17,7 @@ public class Main {
                         "9 - String calculation",
                         "10- Encryption text"
                 };
-
+        //simple menu
         char choiceMenu;
         do {
             System.out.println("Enter menu item 1-10:");
@@ -72,6 +72,7 @@ public class Main {
                     System.out.println("This menu item is not found.");
             }
             System.out.println("\nIf you want to continue with the menu enter \"Y\" or \"y\"");
+            //read only symbol
             choiceMenu = in.next(".").charAt(0);
         }
         while (choiceMenu == 'Y' || choiceMenu == 'y');
