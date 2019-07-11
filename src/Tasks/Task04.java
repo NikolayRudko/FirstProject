@@ -1,4 +1,5 @@
 /*Найти n!, где n-заданное число (n!=1*2*3*…*n).*/
+package Tasks;
 import java.util.Scanner;
 
 public class Task04 {

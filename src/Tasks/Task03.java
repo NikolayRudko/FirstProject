@@ -2,6 +2,8 @@
 Скидка в 3% предоставляется, если сумма покупки больше 500 руб., в 5% - если сумма больше 1000 руб.
  */
 
+package Tasks;
+
 import java.util.Scanner;
 
 public class Task03 {

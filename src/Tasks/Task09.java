@@ -5,6 +5,8 @@
   - поменять местами первое и последнее слова в строке, затем вывести текст на экран.
 */
 
+package Tasks;
+
 import java.util.Scanner;
 
 public class Task09 {

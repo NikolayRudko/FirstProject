@@ -6,6 +6,7 @@
 <1|2> // 1 - получить шифровку, 2 - получить источник.
 Реализуйте все задачи в одной программе. Доступ к каждой задаче осуществляйте через пункт меню.
 */
+package Tasks;
 
 import java.util.Scanner;
 
@@ -95,10 +96,11 @@ public class Task10 {
 
     public void menuEncryption() {
         //ввод текста
-        inputText();
-        //inputTextMod();
+        //inputText();
+        inputTextMod();
         inputShift();
-        encryption();
+        //encryption();
+        encryptionMod();
         System.out.println("Вывести:\n1. Исходный текст\n2. Шифрованный текст.");
         selectEncryption = in.nextInt();
         switch (selectEncryption) {
@@ -112,7 +114,7 @@ public class Task10 {
                 System.out.println("Таккой пункт не найден");
         }
     }
-/*
+
     //enter text
     private void inputTextMod() {
         //индикатор наличия неправильного символа
@@ -125,27 +127,55 @@ public class Task10 {
             System.out.println("Ввелите текст, используйте только символы:\nА-Я, а-я или \"пробел\"\n");
             //считывание строки из консоли
             text = in.nextLine();
+            //меняем Ё на Е
+            text.replace('\u0401', '\u0415');
+            text.replace('\u0435', '\u0451');
             System.out.printf("Введеный текст: %s%n", text);
             //проверка введенного текста на постороние символы:
             // \u0410 - \u042F - А - Я
             // \u0430 - \u044F - а - я
-            // \u0401 & \u0451 - ё - Ё
-            // \u0410 - \u042F - 1-9,0,  space and other special characters
+            // \u0401 & \u0451 - ё - Ё (!(text.charAt(i) == '\u0401') || (text.charAt(i) == '\u0451') )
+            // \u0020 - \u0040 - 1-9,0,  space and other special characters
             for (int i = 0; i < text.length(); i++) {
-                if ((text.charAt(i) >= '\u0410' & text.charAt(i) >= '\u042F') ||
-                        (text.charAt(i) >= '\u0430' & text.charAt(i) >= '\u044F') ||
-                        (text.charAt(i) == '\u0401') || (text.charAt(i) == '\u0451') ||
-                        (text.charAt(i) >= '\u0420' & text.charAt(i) >= '\u0440')) {
-
-                    triger = true;
-                }
-                else{
-                    System.out.println("Error unknown symbol:" + text.charAt(i));
-                    triger = false;
-                    break;
+                if ((text.charAt(i) < '\u0410' & text.charAt(i) > '\u044F') ||
+                        (text.charAt(i) < '\u0020' & text.charAt(i) > '\u0040')) {
+                    {
+                        System.out.println("Error unknown symbol:" + text.charAt(i));
+                        triger = false;
+                        break;
+                    }
                 }
             }
         } while (!triger);
     }
-*/
+
+    private void encryptionMod() {
+
+        char firstSpecSymbol = '\u0020';
+        char lastSpecSymbol = '\u0040';
+        char firstBigLetter = '\u0410';
+        char lastBigLetter = '\u042F';
+        char firstLittleLetter = '\u0430';
+        char lastLittleLetter = '\u044F';
+
+        int quantityLetter = lastBigLetter - firstBigLetter;
+        //проход по каждому символу исходной строки
+        for (int i = 0; i < text.length(); i++) {
+            //если знак пробел, или спец символ
+            if (text.charAt(i) >= firstSpecSymbol & text.charAt(i) <= lastSpecSymbol)
+                encryptionText += text.charAt(i);
+            //работа с большими буквами
+            if (text.charAt(i) >= firstBigLetter & text.charAt(i) <= lastBigLetter)
+                if (lastBigLetter - text.charAt(i) + shift < quantityLetter)
+                    encryptionText += (char)(text.charAt(i) + shift);
+                else
+                    encryptionText += (char)(text.charAt(i) + shift - quantityLetter);
+            //работа с  маленькимибуквами
+            if (text.charAt(i) >= firstLittleLetter & text.charAt(i) <= lastLittleLetter)
+                if (lastLittleLetter - text.charAt(i) + shift < quantityLetter)
+                    encryptionText += (char)(text.charAt(i) + shift);
+                else
+                    encryptionText += (char)(text.charAt(i) + shift - quantityLetter);
+        }
+    }
 }

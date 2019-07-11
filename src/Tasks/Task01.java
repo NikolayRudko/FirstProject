@@ -1,6 +1,8 @@
 /*. Напишите программу, которая определит наибольшее из трех чисел A, B и C.
 Числа A, B и C вводятся с клавиатуры. */
 
+package Tasks;
+
 import java.util.Scanner;
 
 public class Task01 {
