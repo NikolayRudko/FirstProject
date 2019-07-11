@@ -96,11 +96,11 @@ public class Task10 {
 
     public void menuEncryption() {
         //ввод текста
-        //inputText();
-        inputTextMod();
+        inputText();
+        //inputTextMod();
         inputShift();
-        //encryption();
-        encryptionMod();
+        encryption();
+        //encryptionMod();
         System.out.println("Вывести:\n1. Исходный текст\n2. Шифрованный текст.");
         selectEncryption = in.nextInt();
         switch (selectEncryption) {
