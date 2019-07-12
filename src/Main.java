@@ -27,7 +27,7 @@ public class Main {
                 System.out.println(item);
             System.out.println();
 
-            int numItem = in.nextInt();
+            int numItem = inputIt();
 
             switch (numItem) {
                 case 1:
@@ -78,5 +78,19 @@ public class Main {
             choiceMenu = in.next(".").charAt(0);
         }
         while (choiceMenu == 'Y' || choiceMenu == 'y');
+    }
+
+    private static int inputIt() {
+        int num;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input item number: ");
+
+        while (!in.hasNextInt()) {
+            System.out.println("That not a number!");
+            in.next(); // this is important!
+            System.out.print("Input item number: ");
+        }
+        num = in.nextInt();
+        return num;
     }
 }

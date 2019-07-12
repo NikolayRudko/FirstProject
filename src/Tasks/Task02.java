@@ -12,34 +12,27 @@ public class Task02 {
     private int sideB;
     private int sideC;
 
-    //Input numbers
-    private void input() {
-        sideA = inputInt("Input A side: ");
-        sideB = inputInt("Input B side: ");
-        sideC = inputInt("Input C side: ");
-        print();
+    private int inputNum(String str) {
+        int num;
+        System.out.print("Input side " + str + " number: ");
+
+        while (!in.hasNextInt()) {
+            System.out.println("That not a number!");
+            in.next(); // this is important!
+            System.out.print("Input " + str + " number: ");
+        }
+        num = in.nextInt();
+
+        System.out.printf("Side %s = %d%n", str, num);
+        return num;
     }
 
-    //Print numbers
-    private void print() {
-        System.out.printf("Side A = %d%n", sideA);
-        System.out.printf("Side B = %d%n", sideB);
-        System.out.printf("Side C = %d%n", sideC);
-    }
-
-    //Input positive numbers
-    private int inputInt(String str) {
-        int number;
-        do {
-            System.out.println(str);
-            number = in.nextInt();
-        } while (number <= 0);
-        return number;
-    }
 
     //Triangle type definition
     public void triangleType() {
-        input();
+        sideA = inputNum("A");
+        sideB = inputNum("B");
+        sideC = inputNum("C");
         if (sideA == sideB && sideA == sideC)
             System.out.println("This triangle is equilateral");
         else if (sideA == sideB || sideB == sideC || sideC == sideA)

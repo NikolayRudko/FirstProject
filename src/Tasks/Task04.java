@@ -1,5 +1,6 @@
 /*Найти n!, где n-заданное число (n!=1*2*3*…*n).*/
 package Tasks;
+
 import java.util.Scanner;
 
 public class Task04 {
@@ -7,15 +8,26 @@ public class Task04 {
     private int numberN;
     private int factorialN;
 
-    //Input and print input numberN
-    private void inputNumber() {
-        System.out.println("Input number factorial: ");
-        numberN = in.nextInt();
+    private int inputNum() {
+        int num;
+
+        do {
+            System.out.print("Input number factorial not more 16: ");
+            while (!in.hasNextInt()) {
+                System.out.println("That not a number!");
+                in.next(); // this is important!
+                System.out.print("Input number factorial not more 16: ");
+            }
+            num = in.nextInt();
+        } while (num > 16);
+
+        System.out.println(num);
+        return num;
     }
 
     //Calculation of factorial
     public void factorialCalculation() {
-        inputNumber();
+        numberN = inputNum();
         if (numberN < 0)                            // If the user entered a negative number
         {
             factorialN = 0;                         // result 0
@@ -24,13 +36,12 @@ public class Task04 {
         {
             factorialN = 1;                         // factorial 0 = 1
             System.out.printf("Factorial number %d = %d", numberN, factorialN);
-        } else if (numberN < 16)                                    // In all other cases
+        } else // In all other cases
         {
             factorialN = 1;
             for (int i = 1; i < numberN; i++)
                 factorialN *= i;
             System.out.printf("Factorial number %d = %d", numberN, factorialN);
-        } else
-            System.out.println("Error type!!!");
+        }
     }
 }

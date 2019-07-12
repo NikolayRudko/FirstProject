@@ -12,27 +12,26 @@ public class Task01 {
     private int numB;
     private int numC;
 
-    //Input numbers
-    private void input() {
-        System.out.print("Input A number: ");
-        numA = in.nextInt();
-        System.out.print("Input B number: ");
-        numB = in.nextInt();
-        System.out.print("Input C number: ");
-        numC = in.nextInt();
-        print();
-    }
+    private int inputNum(String str) {
+        int num;
+        System.out.print("Input " + str + " number: ");
 
-    //Print numbers
-    private void print() {
-        System.out.printf("A = %d%n", numA);
-        System.out.printf("B = %d%n", numB);
-        System.out.printf("C = %d%n", numC);
+        while (!in.hasNextInt()) {
+            System.out.println("That not a number!");
+            in.next(); // this is important!
+            System.out.print("Input " + str + " number: ");
+        }
+        num = in.nextInt();
+
+        System.out.printf("%s = %d%n", str, num);
+        return num;
     }
 
     //Search max numbers
     public void maxNumber() {
-        input();
+        numA = inputNum("A");
+        numB = inputNum("B");
+        numC = inputNum("C");
         if (numA == numB && numB == numC)
             System.out.println("All numbers are equal!");
         else if (numA == numB && numA > numC)

@@ -12,19 +12,28 @@ public class Task05 {
     private double remainderDivisionFunctions;
 
     //Input and print input numberX
-    private void inputNumber() {
+    private double inputNum() {
+        double num;
         System.out.println("f(x) = ln(x/(1/cos(x+2,7*x)))");
         System.out.println("g(x) = arcsin(1/x)+arccos(x)+(2*x)^(1/2)");
         do {
-            System.out.println("Input number X (0<X<=1):");
-            numberX = in.nextDouble();
-        } while (numberX > 1 || numberX <= 0);
-        System.out.printf("X = %.10f", numberX);
+            System.out.print("Input number X (0<X<=1):");
+            while (!in.hasNextDouble()) {
+                System.out.println("That not a number!");
+                in.next(); // this is important!
+                System.out.print("Input number X (0<X<=1):");
+            }
+            num = in.nextDouble();
+        } while (num <= 0 && num>1 );
+
+        System.out.println(num);
+        return num;
     }
+
 
     //The remainder of the division of functions
     public void division() {
-        inputNumber();
+        numberX = inputNum();
         double resultFunctionF;
         double resultFunctionG;
         resultFunctionF = Math.log(numberX / (1 / Math.cos((numberX + 2.7 * numberX) * Math.PI / 180)));    //result g(x)

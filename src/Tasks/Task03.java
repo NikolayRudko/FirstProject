@@ -12,25 +12,25 @@ public class Task03 {
     private double price;
     private double discountedPrice;
 
-    //Input and print input price
-    private void inputPrice() {
-        price = inputDouble("Input price: ");
-        System.out.printf("Price = %.2f%n", price);
-    }
+    private double inputNum() {
+        double num;
+        System.out.println("Input positive price: ");
 
-    //Input positive number
-    private double inputDouble(String str) {
-        double number;
         do {
-            System.out.println(str);
-            number = in.nextDouble();
-        } while (number <= 0);
-        return number;
+            while (!in.hasNextDouble()) {
+                System.out.println("That not a number!");
+                in.next(); // this is important!
+                System.out.print("Input positive number: ");
+            }
+            num = in.nextDouble();
+        } while (num <= 0);
+        System.out.printf("Price = %.2f%n", num);
+        return num;
     }
 
     //Discounted pricing
     public void discounted() {
-        inputPrice();
+    price = inputNum();
         if (price < 500)
             discountedPrice = price;                //no discount
         else if (price >= 500 && price < 1000)
