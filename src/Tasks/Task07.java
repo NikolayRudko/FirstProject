@@ -14,8 +14,19 @@ public class Task07 {
 
     //Input size array
     private void inputSize() {
-        System.out.println("Input size array:");
-        sizeMatrix = in.nextInt();
+        do {
+            System.out.println("Input size array:");
+            while (!in.hasNextInt()) {
+                System.out.println("Error! There is no INTEGER number!");
+                in.next();
+                System.out.println("There is no INTEGER number!");
+            }
+            sizeMatrix = in.nextInt();
+            if (sizeMatrix <= 0) {
+                System.out.println("Invalid data!");
+            }
+        }
+        while (sizeMatrix <= 0);
         System.out.printf("Size array = %d%n", sizeMatrix);
     }
 
