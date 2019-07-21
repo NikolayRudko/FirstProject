@@ -28,6 +28,7 @@ public class Task08 {
         int number;
         do {
             System.out.println(str);
+            // todo: add checks on input using hasNextInt
             number = in.nextInt();
         } while (number < 0);
         return number;
