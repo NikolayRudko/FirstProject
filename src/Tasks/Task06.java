@@ -15,9 +15,17 @@ public class Task06 {
     private void inputNumber() {
         do {
             System.out.println("Input size array:");
-            ;
+            while (!in.hasNextInt()) {
+                System.out.println("Error! There is no INTEGER number!");
+                in.next();
+                System.out.println("There is no INTEGER number!");
+            }
             sizeArray = in.nextInt();
-        } while (sizeArray < 0);
+            if (sizeArray <= 0) {
+                System.out.println("Invalid data!");
+            }
+        }
+        while (sizeArray <= 0);
         System.out.printf("Size array = %d%n", sizeArray);
     }
 
