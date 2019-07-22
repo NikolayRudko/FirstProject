@@ -74,7 +74,7 @@ public class Main {
                     task10.menuEncryption();
                     break;
                 default:
-                    System.out.println("This menu item is not found.");
+                    break;
             }
             System.out.println("\nIf you want to continue with the menu enter \"Y\" or \"y\"");
             //read only symbol
@@ -96,9 +96,9 @@ public class Main {
             }
             num = in.nextInt();
 
-            if (num <= 0)
+            if (num <= 0 || num > 10)
                 System.out.println("Enter menu item 1-10:");
-        } while (num <= 0);
+        } while (num <= 0 || num > 10);
         return num;
     }
 }
