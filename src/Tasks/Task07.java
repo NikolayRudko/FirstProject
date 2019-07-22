@@ -21,10 +21,11 @@ public class Task07 {
                 in.next();
                 System.out.println("There is no INTEGER number!");
             }
+
             sizeMatrix = in.nextInt();
-            if (sizeMatrix <= 0) {
-                System.out.println("Invalid data!");
-            }
+
+            if (sizeMatrix <= 0)
+                System.out.println("Invalid data! Input a numbers greater than zero!");
         }
         while (sizeMatrix <= 0);
         System.out.printf("Size array = %d%n", sizeMatrix);
@@ -51,13 +52,13 @@ public class Task07 {
         rotateMatrix = new int[sizeMatrix][sizeMatrix];
         System.out.println("Rotate matrix: ");
         int k;
-        for (int i = 0; i < sizeMatrix; i++) {
-            //create rotate array
+        //create rotate array
+        for (int i = 0; i < sizeMatrix; i++)
             for (int j = 0; j < sizeMatrix; j++) {
                 k = (sizeMatrix - 1) - j;
                 rotateMatrix[i][j] = originMatrix[k][i];
             }
-        }
+
         for (int i = 0; i < sizeMatrix; i++) {
             for (int j = 0; j < sizeMatrix; j++)
                 System.out.printf("%4d", rotateMatrix[i][j]);

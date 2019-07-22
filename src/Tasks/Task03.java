@@ -20,9 +20,10 @@ public class Task03 {
             while (!in.hasNextDouble()) {
                 System.out.println("That not a number!");
                 in.next(); // this is important!
-                System.out.print("Input positive number: ");
             }
             num = in.nextDouble();
+            if (num <= 0)
+                System.out.print("Input positive number: ");
         } while (num <= 0);
         System.out.printf("Price = %.2f%n", num);
         return num;
@@ -30,7 +31,7 @@ public class Task03 {
 
     //Discounted pricing
     public void discounted() {
-    price = inputNum();
+        price = inputNum();
         if (price < 500)
             discountedPrice = price;                //no discount
         else if (price >= 500 && price < 1000)

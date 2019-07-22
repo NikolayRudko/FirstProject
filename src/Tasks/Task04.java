@@ -15,9 +15,12 @@ public class Task04 {
             while (!in.hasNextInt()) {
                 System.out.println("That not a number!");
                 in.next(); // this is important!
-                System.out.print("Input number factorial not more 16: ");
             }
             num = in.nextInt();
+
+            if (num > 16 || num < 0)
+                System.out.print("Input positive number factorial not more 16: ");
+
         } while (num > 16 || num < 0);
         System.out.println(num);
         return num;

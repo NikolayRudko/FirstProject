@@ -35,6 +35,7 @@ public class Task09 {
         for (String strTemp : words)
             if (strTemp.length() > longWord.length())
                 longWord = strTemp;
+
         System.out.printf("The long word: %s%n", longWord);
     }
 
@@ -53,6 +54,7 @@ public class Task09 {
             else
                 modStr += words[i];
         }
+
         System.out.println(modStr);
     }
 

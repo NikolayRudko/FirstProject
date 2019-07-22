@@ -14,12 +14,12 @@ public class Task02 {
 
     private int inputNum(String str) {
         int num;
-        System.out.print("Input side " + str + " number: ");
+        System.out.printf("Input side %s number: %n", str);
 
         while (!in.hasNextInt()) {
             System.out.println("That not a number!");
             in.next(); // this is important!
-            System.out.print("Input " + str + " number: ");
+            System.out.printf("Input side %s number: %n", str);
         }
         num = in.nextInt();
 
@@ -33,7 +33,9 @@ public class Task02 {
         sideA = inputNum("A");
         sideB = inputNum("B");
         sideC = inputNum("C");
-        if (sideA == sideB && sideA == sideC)
+        if (sideA + sideB < sideC || sideA + sideC < sideB || sideB + sideC < sideA)
+            System.out.println("This triangle does not exist!!!");
+        else if (sideA == sideB && sideA == sideC)
             System.out.println("This triangle is equilateral");
         else if (sideA == sideB || sideB == sideC || sideC == sideA)
             System.out.println("This triangle is isosceles");

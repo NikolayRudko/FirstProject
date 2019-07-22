@@ -14,12 +14,12 @@ public class Task01 {
 
     private int inputNum(String str) {
         int num;
-        System.out.print("Input " + str + " number: ");
+        System.out.printf("Input %s number: %n",str);
 
         while (!in.hasNextInt()) {
             System.out.println("That not a number!");
             in.next(); // this is important!
-            System.out.print("Input " + str + " number: ");
+            System.out.printf("Input %s number: %n",str);
         }
         num = in.nextInt();
 

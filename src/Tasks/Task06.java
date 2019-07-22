@@ -18,12 +18,12 @@ public class Task06 {
             while (!in.hasNextInt()) {
                 System.out.println("Error! There is no INTEGER number!");
                 in.next();
-                System.out.println("There is no INTEGER number!");
             }
+
             sizeArray = in.nextInt();
-            if (sizeArray <= 0) {
-                System.out.println("Invalid data!");
-            }
+
+            if (sizeArray <= 0)
+                System.out.println("Invalid data! Input a numbers greater than zero!");
         }
         while (sizeArray <= 0);
         System.out.printf("Size array = %d%n", sizeArray);

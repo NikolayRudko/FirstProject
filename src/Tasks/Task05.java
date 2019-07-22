@@ -21,15 +21,15 @@ public class Task05 {
             while (!in.hasNextDouble()) {
                 System.out.println("That not a number!");
                 in.next(); // this is important!
-                System.out.print("Input number X (0<X<=1):");
             }
             num = in.nextDouble();
-        } while (num <= 0 && num>1 );
+            if (num <= 0 && num > 1)
+                System.out.print("Input number X (0<X<=1):");
+        } while (num <= 0 && num > 1);
 
         System.out.println(num);
         return num;
     }
-
 
     //The remainder of the division of functions
     public void division() {

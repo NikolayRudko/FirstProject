@@ -2,8 +2,8 @@ import Tasks.*;
 
 import java.util.Scanner;
 /*
-* @author Rudko Nikolay
-* */
+ * @author Rudko Nikolay
+ * */
 
 public class Main {
     public static void main(String[] args) {
@@ -88,12 +88,17 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("Input item number: ");
 
-        while (!in.hasNextInt()) {
-            System.out.println("That not a number!");
-            in.next(); // this is important!
-            System.out.print("Input item number: ");
-        }
-        num = in.nextInt();
+        do {
+            while (!in.hasNextInt()) {
+                System.out.println("That not a number!");
+                in.next(); // this is important!
+                System.out.print("Input item number: ");
+            }
+            num = in.nextInt();
+
+            if (num <= 0)
+                System.out.println("Enter menu item 1-10:");
+        } while (num <= 0);
         return num;
     }
 }
