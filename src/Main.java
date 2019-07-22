@@ -1,6 +1,9 @@
 import Tasks.*;
 
 import java.util.Scanner;
+/*
+* @author Rudko Nikolay
+* */
 
 public class Main {
     public static void main(String[] args) {
