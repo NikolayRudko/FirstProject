@@ -23,7 +23,7 @@ public class Main {
                         "10- Encryption text"
                 };
         //simple menu
-        char choiceMenu;
+        String choiceMenu;
         do {
             System.out.println("Enter menu item 1-10:");
             for (String item : MenuItem)
@@ -78,9 +78,10 @@ public class Main {
             }
             System.out.println("\nIf you want to continue with the menu enter \"Y\" or \"y\"");
             //read only symbol
-            choiceMenu = in.next(".").charAt(0);
+            choiceMenu = in.nextLine();
         }
-        while (choiceMenu == 'Y' || choiceMenu == 'y');
+        while (choiceMenu.equals("Y") || choiceMenu.equals("y"));
+        System.out.println("The end of the program");
     }
 
     private static int inputIt() {

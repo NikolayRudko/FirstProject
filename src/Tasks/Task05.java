@@ -5,6 +5,8 @@ package Tasks;
 
 import java.util.Scanner;
 
+import static java.lang.Math.*;
+
 public class Task05 {
     Scanner in = new Scanner(System.in);
 
@@ -36,9 +38,9 @@ public class Task05 {
         numberX = inputNum();
         double resultFunctionF;
         double resultFunctionG;
-        resultFunctionF = Math.log(numberX / (1 / Math.cos((numberX + 2.7 * numberX) * Math.PI / 180)));    //result g(x)
+        resultFunctionF = log(numberX / (1 / cos((numberX + 2.7 * numberX) * PI / 180)));    //result g(x)
         System.out.printf("f(x)= %.10f%n", resultFunctionF);
-        resultFunctionG = Math.asin(numberX) + Math.acos(numberX) + Math.sqrt(2 * numberX);                 //result f(x)
+        resultFunctionG = asin(numberX) + acos(numberX) + sqrt(2 * numberX);                 //result f(x)
         System.out.printf("g(x)= %.10f%n", resultFunctionG);
         remainderDivisionFunctions = resultFunctionF % resultFunctionG;
         System.out.printf("The remainder of the division of f(x)/g(x) = %.10f%n", remainderDivisionFunctions);
