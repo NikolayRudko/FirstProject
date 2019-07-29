@@ -35,16 +35,16 @@ public class Task01 {
         if (numA == numB && numB == numC)
             System.out.println("All numbers are equal!");
         else if (numA == numB && numA > numC)
-            System.out.println("Numbers A and B equal and greatest!");
+            System.out.println("Numbers A and B are equal and greatest!");
         else if (numC == numB && numC > numA)
-            System.out.println("Numbers B and C equal and greatest!");
+            System.out.println("Numbers B and C are equal and greatest!");
         else if (numA == numC && numA > numB)
-            System.out.println("Numbers A and B equal and greatest!");
+            System.out.println("Numbers A and B are equal and greatest!");
         else if (numA > numB && numA > numC)
-            System.out.printf("Number A = %d is greatest %n", numA);
+            System.out.printf("Number A = %d is the greatest %n", numA);
         else if (numB >= numA & numB >= numC)
-            System.out.printf("Number B = %d is greatest %n", numB);
+            System.out.printf("Number B = %d is the greatest %n", numB);
         else
-            System.out.printf("Number C = %d is greatest %n", numC);
+            System.out.printf("Number C = %d is the greatest %n", numC);
     }
 }
