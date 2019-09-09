@@ -3,35 +3,34 @@
 
 package Tasks;
 
+import Tasks.MyException.MyException;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task01 {
-    Scanner in = new Scanner(System.in);
-
-    private int numA;
-    private int numB;
-    private int numC;
 
     private int inputNum(String str) {
+        Scanner scanner = new Scanner(System.in);
         int num;
-        System.out.printf("Input %s number: %n",str);
-
-        while (!in.hasNextInt()) {
-            System.out.println("That not a number!");
-            in.next(); // this is important!
-            System.out.printf("Input %s number: %n",str);
+        while (true) {
+            try {
+                System.out.printf("Input %s number: %n", str);
+                num = scanner.nextInt();
+                return num;
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Exception: " + e);
+                System.out.println("That’s not an integer. Try again: ");
+            }
         }
-        num = in.nextInt();
-
-        System.out.printf("%s = %d%n", str, num);
-        return num;
     }
 
     //Search max numbers
     public void maxNumber() {
-        numA = inputNum("A");
-        numB = inputNum("B");
-        numC = inputNum("C");
+        int numA = inputNum("A");
+        int numB = inputNum("B");
+        int numC = inputNum("C");
         if (numA == numB && numB == numC)
             System.out.println("All numbers are equal!");
         else if (numA == numB && numA > numC)
