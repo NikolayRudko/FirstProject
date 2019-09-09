@@ -3,28 +3,23 @@
 
 package Tasks;
 
+import Tasks.MyException.MyException;
+
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Task08 {
-    Scanner in = new Scanner(System.in);
+
 
     private int rows;
     private int columns;
     private int[][] matrix;
-    private int[] summRows;
     private int specialElements = 0;
 
-    //Input numbers
-    private void inputNumber() {
-        rows = inputInt("Input rows: ");
-        columns = inputInt("Input columns: ");
-        System.out.println("Rows = ");
-        System.out.println("Columns = ");
-    }
-
-    //Input positive number
+    /*//Input positive number
     private int inputInt(String str) {
+        Scanner in = new Scanner(System.in);
         int number;
         do {
             System.out.println(str);
@@ -40,10 +35,36 @@ public class Task08 {
         } while (number <= 0);
         return number;
     }
+*/
+
+    private int inputNum(String str) {
+        Scanner scanner = new Scanner(System.in);
+        int num;
+        while (true) {
+            try {
+                System.out.printf("Enter side %s. Enter only a positive integer.\n", str);
+                num = scanner.nextInt();
+                if (num <= 0)
+                    throw new MyException("Number (" + num + ") is not positive integer.");
+                return num;
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Exception: " + e);
+                System.out.println("That’s not an integer. Try again: ");
+            } catch (MyException e) {
+                scanner.nextLine();
+                System.out.println("Exception: " + e);
+            }
+        }
+    }
+
 
     //generate array
     private void generateMatrix() {
-        inputNumber();
+        rows = inputNum("Input rows: ");
+        columns = inputNum("Input columns: ");
+        System.out.println("Rows = ");
+        System.out.println("Columns = ");
         matrix = new int[rows][columns];
         System.out.println("Generate matrix: ");
         //Create an object to generate numbers
@@ -65,7 +86,8 @@ public class Task08 {
     //Search special elements
     public void searchSpecialElements() {
         generateMatrix();
-        summRows = new int[rows];
+
+        int[] summRows = new int[rows];
 
         //line sum calculation
         for (int i = 0; i < rows; i++) {

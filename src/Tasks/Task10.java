@@ -11,7 +11,7 @@ package Tasks;
 import java.util.Scanner;
 
 public class Task10 {
-    Scanner in = new Scanner(System.in);
+    private Scanner in = new Scanner(System.in);
 
     private int selectEncryption;       //Choice of encryption or decryption
     private String text;                //Origin text

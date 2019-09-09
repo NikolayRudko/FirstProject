@@ -14,9 +14,9 @@ public class Task09 {
     private String modStr = "";
     private String[] words;
 
-    Scanner in = new Scanner(System.in);
 
     private void input() {
+        Scanner in = new Scanner(System.in);
         System.out.println("Enter string: ");
         str = in.nextLine();
         //str = "I am sexy i am know it";

@@ -3,17 +3,18 @@
 
 package Tasks;
 
+import Tasks.MyException.MyException;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task07 {
-    Scanner in = new Scanner(System.in);
 
-    private int sizeMatrix;
     private int[][] originMatrix;
-    private int[][] rotateMatrix;
 
     //Input size array
-    private void inputSize() {
+/*    private void inputSize() {
+        Scanner in = new Scanner(System.in);
         do {
             System.out.println("Input size array:");
             while (!in.hasNextInt()) {
@@ -29,11 +30,32 @@ public class Task07 {
         }
         while (sizeMatrix <= 0);
         System.out.printf("Size array = %d%n", sizeMatrix);
+    }*/
+
+    private int inputNum() {
+        Scanner scanner = new Scanner(System.in);
+        int num;
+        while (true) {
+            try {
+                System.out.println("Enter side %s. Enter only a positive integer.");
+                num = scanner.nextInt();
+                if (num <= 0)
+                    throw new MyException("Number (" + num + ") is not positive integer.");
+                return num;
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Exception: " + e);
+                System.out.println("That’s not an integer. Try again: ");
+            } catch (MyException e) {
+                scanner.nextLine();
+                System.out.println("Exception: " + e);
+            }
+        }
     }
 
     //generate origin matrix
     private void generateMatrix() {
-        inputSize();
+        int sizeMatrix = inputNum();
         originMatrix = new int[sizeMatrix][sizeMatrix];
         System.out.println("Origin matrix: ");
         for (int i = 0; i < sizeMatrix; i++) {
@@ -49,7 +71,8 @@ public class Task07 {
     //rotate matrix
     public void rotateOriginMatrix() {
         generateMatrix();
-        rotateMatrix = new int[sizeMatrix][sizeMatrix];
+        int sizeMatrix =  originMatrix.length;
+        int[][] rotateMatrix = new int[sizeMatrix][sizeMatrix];
         System.out.println("Rotate matrix: ");
         int k;
         //create rotate array

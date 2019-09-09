@@ -4,40 +4,46 @@
 
 package Tasks;
 
+import Tasks.MyException.MyException;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task03 {
-    Scanner in = new Scanner(System.in);
-
-    private double price;
-    private double discountedPrice;
 
     private double inputNum() {
+        Scanner scanner = new Scanner(System.in);
         double num;
-        System.out.println("Input positive price: ");
-
-        do {
-            while (!in.hasNextDouble()) {
-                System.out.println("That not a number!");
-                in.next(); // this is important!
+        while (true) {
+            try {
+                System.out.println("Enter the purchase price. Enter only a positive double.");
+                num = scanner.nextInt();
+                if (num <= 0)
+                    throw new MyException("Number (" + num + ") is not positive double.");
+                return num;
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Exception: " + e);
+                System.out.println("That’s not a double. Try again: ");
+            } catch (MyException e) {
+                scanner.nextLine();
+                System.out.println("Exception: " + e);
             }
-            num = in.nextDouble();
-            if (num <= 0)
-                System.out.print("Input positive number: ");
-        } while (num <= 0);
-        System.out.printf("Price = %.2f%n", num);
-        return num;
+        }
     }
 
     //Discounted pricing
     public void discounted() {
-        price = inputNum();
+        double price = inputNum();
+        double discountedPrice;
+        double discount;
         if (price < 500)
             discountedPrice = price;                //no discount
         else if (price >= 500 && price < 1000)
             discountedPrice = price * 0.97;         //3% discount
         else
             discountedPrice = price * 0.95;         //5% discount
-        System.out.printf("Discounted price = %.2f%n", discountedPrice);
+        discount = price - discountedPrice;
+        System.out.printf("Discounted price = %.2f, discount = %.2f.\n", discountedPrice, discount);
     }
 }

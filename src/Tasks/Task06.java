@@ -3,16 +3,20 @@
 или задаются случайным образом.*/
 package Tasks;
 
+import Tasks.MyException.MyException;
+
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Task06 {
-    Scanner in = new Scanner(System.in);
+
     private int sizeArray;
     private int[] randomArray;
 
-    //Input size array
+/*    //Input size array
     private void inputNumber() {
+        Scanner in = new Scanner(System.in);
         do {
             System.out.println("Input size array:");
             while (!in.hasNextInt()) {
@@ -27,11 +31,32 @@ public class Task06 {
         }
         while (sizeArray <= 0);
         System.out.printf("Size array = %d%n", sizeArray);
+    }*/
+
+    private int inputNum() {
+        Scanner scanner = new Scanner(System.in);
+        int num;
+        while (true) {
+            try {
+                System.out.println("Enter side %s. Enter only a positive integer.");
+                num = scanner.nextInt();
+                if (num <= 0)
+                    throw new MyException("Number (" + num + ") is not positive integer.");
+                return num;
+            } catch (InputMismatchException e) {
+                scanner.next();
+                System.out.println("Exception: " + e);
+                System.out.println("That’s not an integer. Try again: ");
+            } catch (MyException e) {
+                scanner.nextLine();
+                System.out.println("Exception: " + e);
+            }
+        }
     }
 
     //generate array
     private void generateArray() {
-        inputNumber();
+        int sizeArray = inputNum();
         randomArray = new int[sizeArray];
         System.out.println("Source array: ");
         // Create an object to generate numbers

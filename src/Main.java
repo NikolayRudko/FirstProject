@@ -2,7 +2,7 @@ import Tasks.*;
 
 import java.util.Scanner;
 /*
- * @author Rudko Nikolay
+ * @author Rudko Nikolai
  * */
 
 public class Main {
@@ -84,7 +84,8 @@ public class Main {
         System.out.println("The end of the program");
     }
 
-    private static int inputIt() {
+    private static int
+    inputIt() {
         int num;
         Scanner in = new Scanner(System.in);
         System.out.print("Input item number: ");
