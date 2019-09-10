@@ -17,26 +17,6 @@ public class Task08 {
     private int[][] matrix;
     private int specialElements = 0;
 
-    /*//Input positive number
-    private int inputInt(String str) {
-        Scanner in = new Scanner(System.in);
-        int number;
-        do {
-            System.out.println(str);
-            while (!in.hasNextInt()) {
-                System.out.println("Error! There is no INTEGER number!");
-                in.next();
-            }
-
-            number = in.nextInt();
-
-            if (number <= 0)
-                System.out.println("Invalid data! Input a numbers greater than zero!");
-        } while (number <= 0);
-        return number;
-    }
-*/
-
     private int inputNum(String str) {
         Scanner scanner = new Scanner(System.in);
         int num;
@@ -47,13 +27,10 @@ public class Task08 {
                 if (num <= 0)
                     throw new MyException("Number (" + num + ") is not positive integer.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not an integer. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException|MyException e) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not a positive integer. Try again: ");
             }
         }
     }

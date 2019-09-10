@@ -42,13 +42,10 @@ public class Task07 {
                 if (num <= 0)
                     throw new MyException("Number (" + num + ") is not positive integer.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not an integer. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException | MyException e) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not an integer. Try again: ");
             }
         }
     }
@@ -71,7 +68,7 @@ public class Task07 {
     //rotate matrix
     public void rotateOriginMatrix() {
         generateMatrix();
-        int sizeMatrix =  originMatrix.length;
+        int sizeMatrix = originMatrix.length;
         int[][] rotateMatrix = new int[sizeMatrix][sizeMatrix];
         System.out.println("Rotate matrix: ");
         int k;

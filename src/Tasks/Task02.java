@@ -20,13 +20,10 @@ public class Task02 {
                 if (num <= 0)
                     throw new MyException("Number (" + num + ") is not positive integer.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not an integer. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException  | MyException e ) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not a positive integer. Try again: ");
             }
         }
     }

@@ -12,30 +12,7 @@ import static java.lang.Math.*;
 
 public class Task05 {
 
-    //Input and print input numberX
-/*
-    private double inputNum() {
-        Scanner in = new Scanner(System.in);
-        double num;
-        System.out.println("f(x) = ln(x/(1/cos(x+2,7*x)))");
-        System.out.println("g(x) = arcsin(1/x)+arccos(x)+(2*x)^(1/2)");
-        do {
-            System.out.print("Input number X (0<X<=1):");
-            while (!in.hasNextDouble()) {
-                System.out.println("That not a number!");
-                in.next(); // this is important!
-            }
-            num = in.nextDouble();
-            if (num <= 0 && num > 1)
-                System.out.print("Input number X (0<X<=1):");
-        } while (num <= 0 && num > 1);
-
-        System.out.println(num);
-        return num;
-    }
-*/
-
-    private double inputNum() {
+        private double inputNum() {
         Scanner scanner = new Scanner(System.in);
         double num;
 
@@ -46,13 +23,10 @@ public class Task05 {
                 if (num <= 0 && num > 1)
                     throw new MyException("Number (" + num + ") s outside the calculated range.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not a double. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException|MyException e) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not a valid double. Try again: ");
             }
         }
     }

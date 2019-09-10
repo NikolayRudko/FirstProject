@@ -8,25 +8,6 @@ import java.util.Scanner;
 
 public class Task04 {
 
-/*    private int inputNum() {
-        Scanner in = new Scanner(System.in);
-        int num;
-        do {
-            System.out.print("Input positive integer number factorial not more 16: ");
-            while (!in.hasNextInt()) {
-                System.out.println("That not a number!");
-                in.next(); // this is important!
-            }
-            num = in.nextInt();
-
-            if (num > 16 || num < 0)
-                System.out.print("Input positive number factorial not more 16: ");
-
-        } while (num > 16 || num < 0);
-        System.out.println(num);
-        return num;
-    }*/
-
     private int inputNum() {
         Scanner scanner = new Scanner(System.in);
         int num;
@@ -37,13 +18,10 @@ public class Task04 {
                 if (num > 16 || num < 0)
                     throw new MyException("The factorial of the number (" + num + ") goes beyond the type integer.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not an integer. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException|MyException e) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not a valid integer. Try again: ");
             }
         }
     }

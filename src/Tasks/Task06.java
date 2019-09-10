@@ -14,25 +14,6 @@ public class Task06 {
     private int sizeArray;
     private int[] randomArray;
 
-/*    //Input size array
-    private void inputNumber() {
-        Scanner in = new Scanner(System.in);
-        do {
-            System.out.println("Input size array:");
-            while (!in.hasNextInt()) {
-                System.out.println("Error! There is no INTEGER number!");
-                in.next();
-            }
-
-            sizeArray = in.nextInt();
-
-            if (sizeArray <= 0)
-                System.out.println("Invalid data! Input a numbers greater than zero!");
-        }
-        while (sizeArray <= 0);
-        System.out.printf("Size array = %d%n", sizeArray);
-    }*/
-
     private int inputNum() {
         Scanner scanner = new Scanner(System.in);
         int num;
@@ -43,13 +24,10 @@ public class Task06 {
                 if (num <= 0)
                     throw new MyException("Number (" + num + ") is not positive integer.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not an integer. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException|MyException e) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not a positive integer. Try again: ");
             }
         }
     }

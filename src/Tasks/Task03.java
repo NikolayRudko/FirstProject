@@ -21,13 +21,10 @@ public class Task03 {
                 if (num <= 0)
                     throw new MyException("Number (" + num + ") is not positive double.");
                 return num;
-            } catch (InputMismatchException e) {
-                scanner.next();
-                System.out.println("Exception: " + e);
-                System.out.println("That’s not a double. Try again: ");
-            } catch (MyException e) {
+            } catch (InputMismatchException|MyException e) {
                 scanner.nextLine();
                 System.out.println("Exception: " + e);
+                System.out.println("That’s not a positive double. Try again: ");
             }
         }
     }
